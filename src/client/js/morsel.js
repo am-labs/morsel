@@ -1,40 +1,46 @@
-var Morsel = {
-  init: function () {
+class Morsel {
+  static init () {
+    return new this
+  }
+
+  constructor () {
     this.setElements()
     this.setHandlers()
-  },
+  }
 
-  setElements: function () {
+  setElements () {
     this.$shortenForm = $('#shorten_form')
     this.$spinner = $('#spinner')
     this.$result = $('#result')
-  },
+  }
 
-  setHandlers: function () {
+  setHandlers () {
     this.$shortenForm.on('submit', this.handleSubmit.bind(this))
-  },
+  }
 
-  handleSubmit: function (event) {
+  handleSubmit (event) {
     event.preventDefault()
 
     this.$result.empty()
     this.$spinner.removeClass('hidden')
 
-    var $form = $(event.target)
-
-    $.ajax({
+    const $form = $(event.target)
+    const options = {
       method: 'GET',
       cache: false,
       url: $form.attr('action'),
-      data: $form.serialize(),
-      success: this.success.bind(this)
-    })
-  },
+      data: $form.serialize()
+    }
 
-  success: function (data) {
+    $.ajax(options).done(this.success.bind(this))
+  }
+
+  success (data) {
     this.$shortenForm.find('input[type=url]').val('')
     this.$spinner.addClass('hidden')
     this.$result.attr('href', data)
     this.$result.text(data)
   }
 }
+
+export default Morsel

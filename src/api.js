@@ -1,12 +1,15 @@
 import { Router } from 'express'
 import { encode, decode } from './lib'
-import Url from './url'
+import Url from './models/url'
 import url from 'url'
 
 const api = Router()
 const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
 
-api.get('/actions/shorten', (req, res, next) => {
+api.get('/actions/shorten', shorten)
+api.get('/redirect/:code', redirect)
+
+export function shorten (req, res, next) {
   const { query } = req
 
   if (!query.url) {
@@ -39,15 +42,15 @@ api.get('/actions/shorten', (req, res, next) => {
       res.send(result)
     })
   })
-})
+}
 
-api.get('/redirect/:code', (req, res, next) => {
+export function redirect (req, res, next) {
   Url.findOne({ _id: decode(req.params.code) }, (err, doc) => {
     if (err) return next(err)
     if (!doc) return res.redirect(baseUrl)
 
     res.redirect(doc.long_url)
   })
-})
+}
 
 export default api

@@ -1,0 +1,23 @@
+.shorten-form {
+  display: flex;
+}
+
+.shorten-form__input,
+.shorten-form__button {
+  font-size: 1em;
+}
+
+.shorten-form__input {
+  flex: 1;
+  padding: 0.7em;
+  border: 1px solid $shadow;
+  outline: none;
+}
+
+.shorten-form__button {
+  background: #eee;
+  padding-left: 0.7em;
+  padding-right: 0.7em;
+  border: 1px solid $shadow;
+  border-left: none;
+}

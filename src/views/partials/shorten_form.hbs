@@ -1,11 +1,17 @@
-<form id="shorten_form" action="/api/actions/shorten" method="GET">
+<form
+  id="shorten_form"
+  class="shorten-form"
+  action="/api/actions/shorten"
+  method="GET">
+
   <input
     type="url"
     id="form_url"
-    class="form-control"
+    class="shorten-form__input"
     name="url"
     placeholder="enter a url to shorten"
     required
     autofocus />
-  <button type="submit">submit</button>
+
+  <button type="submit" class="shorten-form__button">submit</button>
 </form>

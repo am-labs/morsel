@@ -21,7 +21,8 @@ app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, '/views'))
 
 app.use(morgan('dev'))
-app.use(express.static(__dirname + '/../public'))
+
+app.use(express.static(__dirname + '/../static'))
 
 app.get('/', (req, res) => {
   res.render('index')

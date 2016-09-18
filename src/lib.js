@@ -1,12 +1,12 @@
 import { alphabet, base } from './constants'
 
-export function encode (i) {  
+export function encode (i) {
   if (i == 0) {
     return alphabet[0]
   }
 
   const s = []
-  
+
   while (i > 0) {
     s.push(alphabet[i % base])
     i = Math.floor(i / base)

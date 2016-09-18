@@ -1,0 +1,17 @@
+.result-area {
+  margin-top: $spacing-unit;
+}
+
+.result-area__result {
+  font-size: 1.7em;
+  text-decoration: none;
+}
+
+.result-area__result,
+.result-area__result:visited {
+  color: $green;
+}
+
+.result-area__result:hover {
+  text-decoration: underline;
+}
