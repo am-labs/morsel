@@ -28,6 +28,10 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/about', (req, res) => {
+  res.render('about')
+})
+
 app.use('/r/:code', (req, res, next) => {
   res.redirect(`/api/redirect/${req.params.code}`)
 })

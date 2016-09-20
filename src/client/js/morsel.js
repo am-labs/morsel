@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 class Morsel {
   static init () {
     return new this
